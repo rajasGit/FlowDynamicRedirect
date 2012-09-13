@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <choices>
+        <name>Needs_Analysis</name>
+        <choiceText>Needs Analysis</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Needs Analysis</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Prospecting</name>
+        <choiceText>Prospecting</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Prospecting</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Qualification</name>
+        <choiceText>Qualification</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Qualification</stringValue>
+        </value>
+    </choices>
+    <label>Create Account</label>
+    <recordCreates>
+        <name>Create_Account</name>
+        <label>Create Account</label>
+        <locationX>314</locationX>
+        <locationY>15</locationY>
+        <assignRecordIdToReference>vaAccountID</assignRecordIdToReference>
+        <connector>
+            <targetReference>Show_Summary</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Oops</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>Account_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordCreates>
+    <screens>
+        <name>Enter_Account_Information</name>
+        <label>Enter Account Information</label>
+        <locationX>77</locationX>
+        <locationY>17</locationY>
+        <connector>
+            <targetReference>Create_Account</targetReference>
+        </connector>
+        <fields>
+            <name>Account_Name</name>
+            <dataType>String</dataType>
+            <fieldText>Account Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Oops</name>
+        <label>Oops</label>
+        <locationX>579</locationX>
+        <locationY>72</locationY>
+        <fields>
+            <name>OopsHeader</name>
+            <fieldText>&lt;TEXTFORMAT LEADING=&quot;2&quot;&gt;&lt;P ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;1&quot;&gt;We are working on an issue at the moment. But your information is not lost!&lt;/FONT&gt;&lt;/P&gt;&lt;/TEXTFORMAT&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+    </screens>
+    <screens>
+        <name>Show_Summary</name>
+        <label>Show Summary</label>
+        <locationX>361</locationX>
+        <locationY>155</locationY>
+        <fields>
+            <name>SummaryHeader</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;1&quot;&gt;Here are your latest records&lt;/FONT&gt;&lt;/SPAN&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;1&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;1&quot;&gt;&lt;A HREF=&quot;/{!vaAccountID}&quot; TARGET=&quot;_blank&quot;&gt;Account: {!Account_Name} &lt;/A&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;1&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+    </screens>
+    <startElementReference>Enter_Account_Information</startElementReference>
+    <variables>
+        <name>vaAccountID</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>
