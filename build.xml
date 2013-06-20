@@ -1,19 +1,19 @@
-<project name="Flow FlowDynamicRedirect" basedir="." xmlns:sf="antlib:com.salesforce">
+<project name="Flow FlowFormatPhonetoUS" basedir="." xmlns:sf="antlib:com.salesforce">
 
 <property file="build.properties"/>
 <target name="retrieveUnpackaged"> 
-  <mkdir dir="FlowDynamicRedirect"/>
+  <mkdir dir="FlowFormatPhonetoUS"/>
   <sf:retrieve username="${sf.username}" 
       password="${sf.password}" 
       serverurl="${sf.serverurl}" 
-      retrieveTarget="FlowDynamicRedirect" 
-      unpackaged="FlowDynamicRedirect/package.xml"/>
+      retrieveTarget="FlowFormatPhonetoUS" 
+      unpackaged="FlowFormatPhonetoUS/package.xml"/>
 </target>
 <target name="deployUnpackaged">
-  <mkdir dir="FlowDynamicRedirect"/>
+  <mkdir dir="FlowFormatPhonetoUS"/>
   <sf:deploy username="${sf.username}" 
       password="${sf.password}" 
       serverurl="${sf.serverurl}" 
-      deployroot="FlowDynamicRedirect"/>
+      deployroot="FlowFormatPhonetoUS"/>
 </target>
 </project>
